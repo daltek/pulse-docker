@@ -39,6 +39,7 @@ services:
     entrypoint:
       - docker-entrypoint.sh
       - geth
+      - --pulsechain-testnet-v3
       - --http
       - --http.addr
       - 0.0.0.0
