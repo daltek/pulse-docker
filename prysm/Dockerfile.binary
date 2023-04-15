@@ -1,7 +1,7 @@
 ARG DOCKER_TAG
 ARG DOCKER_VC_TAG
 #FROM prysmaticlabs/prysm-beacon-chain:${DOCKER_TAG} as ccsource
-FROM registry.gitlab.com/pulsechaincom/prysm-pulse/beacon-chain:${DOCKER_TAG} 
+FROM registry.gitlab.com/pulsechaincom/prysm-pulse/beacon-chain:${DOCKER_TAG} as ccsource
 
 FROM debian:bullseye-slim as consensus
 
