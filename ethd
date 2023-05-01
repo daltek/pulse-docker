@@ -1324,7 +1324,7 @@ query_network() {
     "mainnet" "Ethereum Mainnet" \
     "gnosis" "Gnosis Chain (né xDai)" \
     "zhejiang" "Zhejiang Testnet" \
-    "pulsechain-testnet-v3" "PulseChain Testnet v3" \
+    "pulsechain-testnet-v4" "PulseChain Testnet v4" \
     "sepolia" "Sepolia Testnet (permissioned validators)" 3>&1 1>&2 2>&3)
 
     case "${NETWORK}" in
@@ -1334,7 +1334,7 @@ query_network() {
        "gnosis")
            echo "You chose to run on Gnosis Chain"
            ;;
-       "goerli" | "sepolia" | "zhejiang" | "pulsechain-testnet-v3")
+       "goerli" | "sepolia" | "zhejiang" | "pulsechain-testnet-v4")
            echo "You chose to run on ${NETWORK} testnet"
            ;;
        *)
@@ -1632,8 +1632,8 @@ query_checkpoint_beacon() {
             "zhejiang")
                 RAPID_SYNC_URL="https://checkpointz.zhejiang.ethpandaops.io/"
                 ;;
-            "pulsechain-testnet-v3")
-                RAPID_SYNC_URL="https://checkpoint.v3.testnet.pulsechain.com"
+            "pulsechain-testnet-v4")
+                RAPID_SYNC_URL="https://checkpoint.v4.testnet.pulsechain.com"
                 ;;
             *)
                 RAPID_SYNC_URL=""
@@ -1712,7 +1712,7 @@ query_coinbase() {
 }
 
 query_mev() {
-    if [ "${NETWORK}" = "zhejiang" ] || [ "${NETWORK}" = "gnosis" ] || [ "${NETWORK}" = "pulsechain-testnet-v3" ]; then
+    if [ "${NETWORK}" = "zhejiang" ] || [ "${NETWORK}" = "gnosis" ] || [ "${NETWORK}" = "pulsechain-testnet-v4" ]; then
         return
     fi
     var="MEV_BOOST"
@@ -1867,7 +1867,7 @@ config() {
     if [ "${MEV_BOOST}" = "true" ]; then
         COMPOSE_FILE="${COMPOSE_FILE}:mev-boost.yml"
     fi
-    if [ "${NETWORK}" = "goerli" ] || [ "${NETWORK}" = "zhejiang" ] || [ "${NETWORK}" = "pulsechain-testnet-v3" ]; then
+    if [ "${NETWORK}" = "goerli" ] || [ "${NETWORK}" = "zhejiang" ] || [ "${NETWORK}" = "pulsechain-testnet-v4" ]; then
         COMPOSE_FILE="${COMPOSE_FILE}:deposit-cli.yml"
     fi
 # Not multi-arch, this would break on ARM64
