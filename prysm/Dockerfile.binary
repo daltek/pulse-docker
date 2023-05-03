@@ -46,7 +46,7 @@ USER ${USER}
 
 ENTRYPOINT ["beacon-chain"]
 
-FROM registry.gitlab.com/pulsechaincom/prysm-pulse/beacon-chain:${DOCKER_VC_TAG} as vcsource
+FROM registry.gitlab.com/pulsechaincom/prysm-pulse/validator:${DOCKER_VC_TAG} as vcsource
 
 FROM consensus as validator
 
